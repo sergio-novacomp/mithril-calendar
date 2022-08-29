@@ -22,11 +22,9 @@
             oncreate: function (vnode) {
                 console.log('FullCalndar::oncreate')
                 $(vnode.dom).fullCalendar({
-                    // put your initial options and callbacks here
                 })
             },
             onremove: function (vnode) {
-                // Run any destroy / cleanup methods here.
                 $(vnode.dom).fullCalendar('destroy')
             },
             view: function (vnode) {
