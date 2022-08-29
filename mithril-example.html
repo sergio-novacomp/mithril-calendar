@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.7.0/fullcalendar.min.css">
+</head>
+
+<body>
+    <script src="https://unpkg.com/mithril/mithril.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/moment.min.js"
+        integrity="sha512-L2UATAVdhvxLLi/PfjXCWApUVKHPnek7qKO3SY8R3NhJGfqj/rUrS0akJZyKAFxTTXmGIuWefYvLksmXRArdHQ=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+        integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/fullcalendar@3.7.0/dist/fullcalendar.js"></script>
+    <script>
+        /** FullCalendar wrapper component */
+        var FullCalendar = {
+            oncreate: function (vnode) {
+                console.log('FullCalndar::oncreate')
+                $(vnode.dom).fullCalendar({
+                    // put your initial options and callbacks here
+                })
+            },
+            onremove: function (vnode) {
+                // Run any destroy / cleanup methods here.
+                $(vnode.dom).fullCalendar('destroy')
+            },
+            view: function (vnode) {
+                return m('div')
+            }
+        }
+
+        /** Demo app component */
+        function Demo() {
+            var fullCalendarEl
+
+            return {
+                view: function (vnode) {
+                    return [
+                        m('h1', 'Calendar example demo for Oxygen'),
+                        m('h2', 'Sergio Espinosa'),
+                        m(FullCalendar, {
+                            oncreate: function (vnode) {
+                                fullCalendarEl = vnode.dom
+                            }
+                        })
+
+                    ]
+                }
+            }
+        }
+
+        m.mount(document.body, Demo)
+
+    </script>
+</body>
+
+</html>
